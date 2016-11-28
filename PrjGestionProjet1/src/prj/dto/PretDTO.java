@@ -31,15 +31,15 @@ public class PretDTO {
 		return membreDTO;
 	}
 
-	public void setIdMembre(MembreDTO membreDTO) {
+	public void setMembreDTO(MembreDTO membreDTO) {
 		this.membreDTO = membreDTO;
 	}
 
-	public LivreDTO getIdLivre() {
+	public LivreDTO getLivreDTO() {
 		return livreDTO;
 	}
 
-	public void setIdLivre(LivreDTO livreDTO) {
+	public void setLivreDTO(LivreDTO livreDTO) {
 		this.livreDTO = livreDTO;
 	}
 
