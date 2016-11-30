@@ -6,7 +6,7 @@ public class LivreDTO extends DTO {
 	
 	private String idLivre;
 	
-	private String idCategorie;
+	private CategorieDTO categorie;
 	
 	private String titre;
 	
@@ -28,14 +28,15 @@ public class LivreDTO extends DTO {
 
 	public void setIdLivre(String idLivre) {
 		this.idLivre = idLivre;
+		setId(idLivre);
 	}
 
-	public String getIdCategorie() {
-		return idCategorie;
+	public CategorieDTO getCategorieDTO() {
+		return categorie;
 	}
 
-	public void setIdCategorie(String idCategorie) {
-		this.idCategorie = idCategorie;
+	public void setCategorieDTO(CategorieDTO categorie) {
+		this.categorie = categorie;
 	}
 
 	public String getTitre() {

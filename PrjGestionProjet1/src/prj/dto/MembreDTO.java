@@ -1,6 +1,6 @@
 package prj.dto;
 
-public class MembreDTO {
+public class MembreDTO extends DTO{
 	
 	private String idMembre;
 	
@@ -26,6 +26,7 @@ public class MembreDTO {
 
 	public void setIdMembre(String idMembre) {
 		this.idMembre = idMembre;
+		setId(idMembre);
 	}
 
 	public String getPrenom() {

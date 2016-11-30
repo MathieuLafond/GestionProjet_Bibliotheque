@@ -2,7 +2,7 @@ package prj.dto;
 
 import java.sql.Timestamp;
 
-public class PretDTO {
+public class PretDTO extends DTO {
 
 	
 	private String idPret;
@@ -25,6 +25,7 @@ public class PretDTO {
 
 	public void setIdPret(String idPret) {
 		this.idPret = idPret;
+		setId(idPret);
 	}
 
 	public MembreDTO getMembreDTO() {

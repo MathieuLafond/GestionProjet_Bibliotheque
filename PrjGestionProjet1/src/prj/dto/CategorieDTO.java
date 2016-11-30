@@ -14,6 +14,7 @@ public class CategorieDTO extends DTO {
 
 	public void setIdCategorie(String idCategorie) {
 		this.idCategorie = idCategorie;
+		setId(idCategorie);
 	}
 
 	public String getNomCategorie() {
