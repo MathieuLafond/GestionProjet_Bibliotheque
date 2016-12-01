@@ -4,7 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import prj.backend.dao.LivreDAO;
+import prj.backend.db.Database;
 import prj.backend.dto.LivreDTO;
+import prj.backend.dto.PretDTO;
+import prj.backend.exception.ServiceException;
 
 public class LivreService extends Service<LivreDTO,LivreDAO> {
 
@@ -15,11 +18,27 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 	public void acquerir(LivreDTO livreDTO){
 		create(livreDTO);
 	}
-	public void vendre(LivreDTO livreDTO){
-		delete(livreDTO);//TODO vérifications
+	public void vendre(LivreDTO livreDTO) throws ServiceException{
+		LivreDTO livre = read(livreDTO.getIdLivre());
+		List<PretDTO> prets = Database.getPrets();
+		for(PretDTO pret : prets){
+			if(pret.getLivreDTO().equals(livre)){
+				throw new ServiceException("Erreur : un prêt est en cours sur ce livre");
+			}
+		}
+		delete(livre);
 	}
 	
-	public void deleteAllInCategorie(String idCategorie){
+	public void deleteAllInCategorie(String idCategorie) throws ServiceException{
+		List<LivreDTO> livres = findByCategorie(idCategorie);
+		List<PretDTO> prets = Database.getPrets();
+		for(LivreDTO livre : livres){
+			for(PretDTO pret : prets){
+				if(pret.getLivreDTO().equals(livre)){
+					throw new ServiceException("Erreur : un prêt est en cours sur un livre de cette catégorie");
+				}
+			}
+		}
 		getDAO().deleteAllInCategorie(idCategorie);
 	}
 	

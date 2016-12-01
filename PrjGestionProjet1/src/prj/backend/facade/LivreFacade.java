@@ -5,6 +5,8 @@ import java.util.List;
 
 import prj.backend.dao.LivreDAO;
 import prj.backend.dto.LivreDTO;
+import prj.backend.exception.FacadeException;
+import prj.backend.exception.ServiceException;
 import prj.backend.service.LivreService;
 
 public class LivreFacade extends Facade<LivreDTO,LivreDAO,LivreService> {
@@ -16,12 +18,21 @@ public class LivreFacade extends Facade<LivreDTO,LivreDAO,LivreService> {
 	public void acquerir(LivreDTO livreDTO){
 		getService().acquerir(livreDTO);
 	}
-	public void vendre(LivreDTO livreDTO){
-		getService().vendre(livreDTO);
+	public void vendre(LivreDTO livreDTO) throws FacadeException{
+		try {
+			getService().vendre(livreDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	
-	public void deleteAllInCategorie(String idCategorie){
-		getService().deleteAllInCategorie(idCategorie);
+	public void deleteAllInCategorie(String idCategorie) throws FacadeException{
+		try{
+			getService().deleteAllInCategorie(idCategorie);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
+		
 	}
 	
 	public List<LivreDTO> findByTitre(String titre){

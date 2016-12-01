@@ -39,12 +39,12 @@ public class PretDAO extends DAO<PretDTO>{
 		List<PretDTO> retour = Collections.emptyList();
 		for(PretDTO pret : prets){
 			if(pret.getDateRetour()==null){
-				if(pret.getDateLimite().compareTo(new Timestamp(System.currentTimeMillis()))<0){
+				if(pret.getDateLimite().before(new Timestamp(System.currentTimeMillis()))){
 					retour.add(pret);
 				}
 			}
 			else {
-				if(pret.getDateLimite().compareTo(pret.getDateRetour())<0){
+				if(pret.getDateLimite().before(pret.getDateRetour())){
 					retour.add(pret);
 				}
 			}

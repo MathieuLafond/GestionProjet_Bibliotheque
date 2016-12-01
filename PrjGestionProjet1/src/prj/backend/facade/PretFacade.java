@@ -6,6 +6,8 @@ import prj.backend.dao.PretDAO;
 import prj.backend.dto.LivreDTO;
 import prj.backend.dto.MembreDTO;
 import prj.backend.dto.PretDTO;
+import prj.backend.exception.FacadeException;
+import prj.backend.exception.ServiceException;
 import prj.backend.service.PretService;
 
 public class PretFacade extends Facade<PretDTO,PretDAO,PretService>{
@@ -14,8 +16,12 @@ public class PretFacade extends Facade<PretDTO,PretDAO,PretService>{
 		super(service);
 	}
 
-	public void creer(PretDTO pretDTO){
-		getService().creer(pretDTO);
+	public void creer(PretDTO pretDTO) throws FacadeException{
+		try {
+			getService().creer(pretDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	public void retourner(PretDTO pretDTO){
 		getService().retourner(pretDTO);

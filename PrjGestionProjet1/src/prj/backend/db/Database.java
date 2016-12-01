@@ -1,5 +1,6 @@
 package prj.backend.db;
 
+import java.util.Collections;
 import java.util.List;
 
 import prj.backend.dto.CategorieDTO;
@@ -9,10 +10,10 @@ import prj.backend.dto.PretDTO;
 
 public class Database {
 	
-	private static List<LivreDTO> livres;
-	private static List<MembreDTO> membres;
-	private static List<PretDTO> prets;
-	private static List<CategorieDTO> categories;
+	private static List<LivreDTO> livres = Collections.emptyList();
+	private static List<MembreDTO> membres = Collections.emptyList();
+	private static List<PretDTO> prets = Collections.emptyList();
+	private static List<CategorieDTO> categories = Collections.emptyList();
 	
 	public static void load(){
 		
@@ -21,7 +22,6 @@ public class Database {
 	public static void save(){
 		
 	}
-	
 
 	public static List<LivreDTO> getLivres(){
 		return livres;
