@@ -9,7 +9,7 @@ public class Service<E extends DTO,T extends DAO<E>> {
 	
 	private T dao;
 	
-	public Service(T dao){
+	protected Service(T dao){
 		this.dao=dao;
 	}
 	

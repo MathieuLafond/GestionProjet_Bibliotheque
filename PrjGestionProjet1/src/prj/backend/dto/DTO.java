@@ -2,6 +2,9 @@ package prj.backend.dto;
 
 public class DTO {
 
+	protected DTO(){
+		
+	}
 	
 	private String id;
 	

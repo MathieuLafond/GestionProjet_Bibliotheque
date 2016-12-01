@@ -8,7 +8,7 @@ public class DAO<T extends DTO> {
 	
 	private List<T> dtos;
 	
-	public DAO(List<T> db){
+	protected DAO(List<T> db){
 		dtos=db;
 	}
 	

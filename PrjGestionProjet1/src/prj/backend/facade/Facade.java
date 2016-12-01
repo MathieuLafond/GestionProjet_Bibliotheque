@@ -10,7 +10,7 @@ public class Facade<E extends DTO,F extends DAO<E>,T extends Service<E,F>>{
 	
 	private T service;
 	
-	public Facade(T service){
+	protected Facade(T service){
 		this.service=service;
 	}
 	
