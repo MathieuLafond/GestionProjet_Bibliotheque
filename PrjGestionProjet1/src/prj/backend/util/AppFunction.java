@@ -13,7 +13,6 @@ import prj.backend.service.CategorieService;
 import prj.backend.service.LivreService;
 import prj.backend.service.MembreService;
 import prj.backend.service.PretService;
-import prj.frontend.FenUtilisateur;
 
 public class AppFunction {
 	
@@ -38,7 +37,6 @@ public class AppFunction {
 		pretFacade = new PretFacade(pretService);
 		categorieFacade = new CategorieFacade(categorieService);
 		
-		FenUtilisateur fenUtilisateur = new FenUtilisateur();
 	}
 
 	public LivreFacade getLivreFacade() {
