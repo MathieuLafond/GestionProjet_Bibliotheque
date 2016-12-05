@@ -19,6 +19,7 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 	}
 	
 	public void acquerir(LivreDTO livreDTO) throws ServiceException{
+		livreDTO.setIdLivre(""+Database.getSeqLivreVal());
 		create(livreDTO);
 	}
 	public void vendre(LivreDTO livreDTO) throws ServiceException{
@@ -77,6 +78,21 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 		}
 		if(livreDTO.getCategorieDTO().getNomCategorie()==null){
 			livreDTO.getCategorieDTO().setNomCategorie("");
+		}
+		if(livreDTO.getAuteur()==null){
+			livreDTO.setAuteur("");
+		}
+		if(livreDTO.getEditeur()==null){
+			livreDTO.setEditeur("");
+		}
+		if(livreDTO.getEmplacement()==null){
+			livreDTO.setEmplacement("");
+		}
+		if(livreDTO.getLangue()==null){
+			livreDTO.setLangue("");
+		}
+		if(livreDTO.getTitre()==null){
+			livreDTO.setTitre("");
 		}
 		return getDAO().findByForm(livreDTO);
 	}

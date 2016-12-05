@@ -15,6 +15,7 @@ public class MembreService extends Service<MembreDTO,MembreDAO>{
 	}
 	
 	public void inscrire(MembreDTO membreDTO) throws ServiceException{
+		membreDTO.setIdMembre(""+Database.getSeqMembreVal());
 		create(membreDTO);
 	}
 	public void desinscrire(MembreDTO membreDTO) throws ServiceException{

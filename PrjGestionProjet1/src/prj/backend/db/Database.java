@@ -15,6 +15,11 @@ public class Database {
 	private static ArrayList<PretDTO> prets = new ArrayList<>();
 	private static ArrayList<CategorieDTO> categories = new ArrayList<>();
 	
+	private static int seq_livre=1;
+	private static int seq_membre=1;
+	private static int seq_pret=1;
+	private static int seq_categorie=1;
+	
 	public static void load(){
 		
 	}
@@ -34,6 +39,23 @@ public class Database {
 	}
 	public static List<CategorieDTO> getCategories(){
 		return categories;
+	}
+	
+	public static int getSeqLivreVal(){
+		return seq_livre++;
+		
+	}
+	public static int getSeqMembreVal(){
+		return seq_membre++;
+		
+	}
+	public static int getSeqPretVal(){
+		return seq_pret++;
+		
+	}
+	public static int getSeqCategorieVal(){
+		return seq_categorie++;
+		
 	}
 	
 }

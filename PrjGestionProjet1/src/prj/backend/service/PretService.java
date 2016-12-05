@@ -40,6 +40,7 @@ public class PretService extends Service<PretDTO,PretDAO>{
 					throw new ServiceException("Erreur : le membre a des prêts en retard non payés");
 				}
 			}
+			unPret.setIdPret(""+Database.getSeqPretVal());
 			unPret.setLivreDTO(livre);
 			unPret.setMembreDTO(membre);
 			unPret.setDatePret(new Timestamp(System.currentTimeMillis()));

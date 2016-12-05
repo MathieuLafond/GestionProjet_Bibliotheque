@@ -10,7 +10,7 @@ public class QuickLoad {
 	static public <T extends DTO> T read(String id,List<T> db) throws DAOException{
 		T retour=null;
 		for(T dto : db){
-			if(id.equals(dto.getId())){
+			if(dto.getId().equals(id)){
 				retour= dto;
 				break;
 			}

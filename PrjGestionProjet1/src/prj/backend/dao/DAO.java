@@ -26,7 +26,7 @@ public class DAO<T extends DTO> {
 	public T read(String id) throws DAOException{
 		T retour=null;
 		for(T dto : dtos){
-			if(id.equals(dto.getId())){
+			if(dto.getId().equals(id)){
 				retour= dto;
 				break;
 			}
@@ -48,8 +48,8 @@ public class DAO<T extends DTO> {
 		if(index==-1){
 			throw new DAOException("L'entrée à modifier n'existe pas");
 		}
-			dtos.remove(index);
-			dtos.add(index, objDto);
+		dtos.remove(index);
+		dtos.add(index, objDto);
 	}
 	
 	public void delete(T objDto) throws DAOException{

@@ -15,6 +15,7 @@ public class CategorieService extends Service<CategorieDTO,CategorieDAO>{
 	}
 
 	public void ajouter(CategorieDTO categorieDTO) throws ServiceException {
+		categorieDTO.setIdCategorie(""+Database.getSeqCategorieVal());
 		create(categorieDTO);
 	}
 
