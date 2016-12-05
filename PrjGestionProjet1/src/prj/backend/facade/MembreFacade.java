@@ -12,8 +12,12 @@ public class MembreFacade extends Facade<MembreDTO,MembreDAO,MembreService>{
 		super(service);
 	}
 	
-	public void inscrire(MembreDTO membreDTO){
-		getService().inscrire(membreDTO);
+	public void inscrire(MembreDTO membreDTO) throws FacadeException{
+		try {
+			getService().inscrire(membreDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	public void desinscrire(MembreDTO membreDTO) throws FacadeException{
 		try {
@@ -22,8 +26,12 @@ public class MembreFacade extends Facade<MembreDTO,MembreDAO,MembreService>{
 			throw new FacadeException(exception);
 		}
 	}
-	public void modifier(MembreDTO membreDTO){
-		getService().modifier(membreDTO);
+	public void modifier(MembreDTO membreDTO) throws FacadeException{
+		try {
+			getService().modifier(membreDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	
 }

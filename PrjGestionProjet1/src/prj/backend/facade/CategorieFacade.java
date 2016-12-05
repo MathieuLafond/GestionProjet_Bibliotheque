@@ -12,8 +12,12 @@ public class CategorieFacade extends Facade<CategorieDTO,CategorieDAO,CategorieS
 		super(service);
 	}
 	
-	public void ajouter(CategorieDTO categorieDTO){
-		getService().ajouter(categorieDTO);
+	public void ajouter(CategorieDTO categorieDTO) throws FacadeException{
+		try {
+			getService().ajouter(categorieDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	
 	public void supprimer(CategorieDTO categorieDTO) throws FacadeException{

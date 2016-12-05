@@ -14,7 +14,7 @@ public class MembreService extends Service<MembreDTO,MembreDAO>{
 		super(dao);
 	}
 	
-	public void inscrire(MembreDTO membreDTO){
+	public void inscrire(MembreDTO membreDTO) throws ServiceException{
 		create(membreDTO);
 	}
 	public void desinscrire(MembreDTO membreDTO) throws ServiceException{
@@ -27,7 +27,7 @@ public class MembreService extends Service<MembreDTO,MembreDAO>{
 		}
 		delete(membre);
 	}
-	public void modifier(MembreDTO membreDTO){
+	public void modifier(MembreDTO membreDTO) throws ServiceException{
 		update(membreDTO);
 	}
 	

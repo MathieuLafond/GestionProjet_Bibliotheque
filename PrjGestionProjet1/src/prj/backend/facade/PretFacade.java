@@ -23,15 +23,27 @@ public class PretFacade extends Facade<PretDTO,PretDAO,PretService>{
 			throw new FacadeException(exception);
 		}
 	}
-	public void retourner(PretDTO pretDTO){
-		getService().retourner(pretDTO);
+	public void retourner(PretDTO pretDTO) throws FacadeException{
+		try {
+			getService().retourner(pretDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
-	public void payer(PretDTO pretDTO){
-		getService().payer(pretDTO);
+	public void payer(PretDTO pretDTO) throws FacadeException{
+		try {
+			getService().payer(pretDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	
-	public double calculerFraisRetard(PretDTO pretDTO){
-		return getService().calculerFraisRetard(pretDTO);
+	public double calculerFraisRetard(PretDTO pretDTO) throws FacadeException{
+		try {
+			return getService().calculerFraisRetard(pretDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	
 	public List<PretDTO> findByMembre(MembreDTO membreDTO){

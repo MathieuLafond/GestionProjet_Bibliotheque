@@ -15,7 +15,7 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 		super(dao);
 	}
 	
-	public void acquerir(LivreDTO livreDTO){
+	public void acquerir(LivreDTO livreDTO) throws ServiceException{
 		create(livreDTO);
 	}
 	public void vendre(LivreDTO livreDTO) throws ServiceException{

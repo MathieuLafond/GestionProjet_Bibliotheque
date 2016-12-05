@@ -14,7 +14,7 @@ public class CategorieService extends Service<CategorieDTO,CategorieDAO>{
 		super(dao);
 	}
 
-	public void ajouter(CategorieDTO categorieDTO) {
+	public void ajouter(CategorieDTO categorieDTO) throws ServiceException {
 		create(categorieDTO);
 	}
 

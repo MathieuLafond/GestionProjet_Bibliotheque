@@ -15,8 +15,12 @@ public class LivreFacade extends Facade<LivreDTO,LivreDAO,LivreService> {
 		super(service);
 	}
 	
-	public void acquerir(LivreDTO livreDTO){
-		getService().acquerir(livreDTO);
+	public void acquerir(LivreDTO livreDTO) throws FacadeException{
+		try {
+			getService().acquerir(livreDTO);
+		} catch (ServiceException exception) {
+			throw new FacadeException(exception);
+		}
 	}
 	public void vendre(LivreDTO livreDTO) throws FacadeException{
 		try {

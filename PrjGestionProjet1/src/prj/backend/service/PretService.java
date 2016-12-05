@@ -42,7 +42,7 @@ public class PretService extends Service<PretDTO,PretDAO>{
 		unPret.setMembreDTO(membre);
 		create(unPret);
 	}
-	public void retourner(PretDTO pretDTO){
+	public void retourner(PretDTO pretDTO) throws ServiceException{
 		PretDTO pret = read(pretDTO.getIdPret());
 		Timestamp aujourdhui = new Timestamp(System.currentTimeMillis());
 		pret.setDateRetour(aujourdhui);
@@ -53,12 +53,12 @@ public class PretService extends Service<PretDTO,PretDAO>{
 			update(pret);
 		}
 	}
-	public void payer(PretDTO pretDTO){
+	public void payer(PretDTO pretDTO) throws ServiceException{
 		PretDTO pret = read(pretDTO.getIdPret());
 		delete(pret);
 	}
 	
-	public double calculerFraisRetard(PretDTO pretDTO){
+	public double calculerFraisRetard(PretDTO pretDTO) throws ServiceException{
 		PretDTO pret = read(pretDTO.getIdPret());
 		double montant = 0;
 		Timestamp limite = pret.getDateLimite();
