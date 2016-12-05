@@ -14,7 +14,8 @@ class TestUnit {
 
 	public static void main(String[] args) {
 		testBackEndNoError();
-		//testBackEndWithError();
+		System.out.println("\n---------------------\n");
+		testBackEndWithError();
 	}
 
 	private static void testBackEndWithError() {
@@ -275,7 +276,7 @@ class TestUnit {
 				app.getPretFacade().creer(pret);
 			}
 			
-			/*//Aperçu Insert (OK)
+			//Aperçu Insert (OK)
 			System.out.println("Categories\n");
 			for(CategorieDTO categorieDTO : app.getCategorieFacade().getAll()){
 				System.out.println(affichageCategorie(categorieDTO));
@@ -292,7 +293,7 @@ class TestUnit {
 			for(PretDTO pretDTO : app.getPretFacade().getAll()){
 				System.out.println(affichagePret(pretDTO));
 			}
-			*/
+			
 			
 			//Update 
 			
@@ -304,11 +305,11 @@ class TestUnit {
 			membre.setCodePostal("G9P2H3");
 			membre.setAdresse("4998 rue desMarmottes");
 			app.getMembreFacade().modifier(membre);
-			/*//Aperçu Update (OK)
+			//Aperçu Update (OK)
 			membre = QuickLoad.read("18", Database.getMembres());
 			System.out.println("Membre 18 modifié :\n");
 			System.out.println(affichageMembre(membre));
-			*/
+			
 			
 			//Delete
 			livre = new LivreDTO();
@@ -327,7 +328,7 @@ class TestUnit {
 				app.getCategorieFacade().supprimer(categorie);
 			}
 			
-			/*//Aperçu Delete (OK)
+			//Aperçu Delete (OK)
 			System.out.println("Categories\n");
 			for(CategorieDTO categorieDTO : app.getCategorieFacade().getAll()){
 				System.out.println(affichageCategorie(categorieDTO));
@@ -344,9 +345,9 @@ class TestUnit {
 			for(PretDTO pretDTO : app.getPretFacade().getAll()){
 				System.out.println(affichagePret(pretDTO));
 			}
-			*/
 			
-			/*//Read (OK)
+			
+			//Read (OK)
 			
 			livre = new LivreDTO();
 			membre = new MembreDTO();
@@ -374,7 +375,7 @@ class TestUnit {
 			}
 			for(PretDTO pretDTO : app.getPretFacade().findByLivre(livre)){
 				System.out.println(affichagePret(pretDTO));
-			}*/
+			}
 			
 			
 			
@@ -387,29 +388,35 @@ class TestUnit {
 			app.getPretFacade().payer(pret);
 			app.getLivreFacade().deleteAllInCategorie(categorie);
 			
-			/*//Aperçu Delete all in categorie (OK)
+			//Aperçu Delete all in categorie (OK)
 			System.out.println("Livres\n");
 			for(LivreDTO livreDTO : app.getLivreFacade().getAll()){
 				System.out.println(affichageLivre(livreDTO));
 			}
-			*/
 			
-			//TODO findByRetard / retourner / getFraisRetard
+			
 			try {
 				Thread.sleep(30000);
 			} catch (InterruptedException e) {
-				//e.printStackTrace();
+				System.out.println(e.getLocalizedMessage());
 			}
 			pret = new PretDTO();
+			pret.setIdPret("15");
+			app.getPretFacade().retourner(pret);
 			System.out.println("Prets\n");
 			for(PretDTO pretDTO : app.getPretFacade().findByRetard()){
 				System.out.println(affichagePret(pretDTO));
 			}
-			
+			System.out.println(app.getPretFacade().calculerFraisRetard(pret));
+			System.out.println("Prets\n");
+			app.getPretFacade().payer(pret);
+			for(PretDTO pretDTO : app.getPretFacade().findByRetard()){
+				System.out.println(affichagePret(pretDTO));
+			}
 			
 		} catch (FacadeException | DAOException e) {
-			//System.out.println(e.getLocalizedMessage());
-			e.printStackTrace();
+			System.out.println(e.getLocalizedMessage());
+			//e.printStackTrace();
 		}
 	}
 	

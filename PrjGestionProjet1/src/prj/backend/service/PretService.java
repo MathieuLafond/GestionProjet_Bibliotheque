@@ -53,7 +53,7 @@ public class PretService extends Service<PretDTO,PretDAO>{
 		PretDTO pret = read(pretDTO.getIdPret());
 		Timestamp aujourdhui = new Timestamp(System.currentTimeMillis());
 		pret.setDateRetour(aujourdhui);
-		if(aujourdhui.after(pret.getDateLimite())){
+		if(aujourdhui.before(pret.getDateLimite())){
 			delete(pret);
 		}
 		else {
@@ -67,6 +67,10 @@ public class PretService extends Service<PretDTO,PretDAO>{
 	
 	public double calculerFraisRetard(PretDTO pretDTO) throws ServiceException{
 		PretDTO pret = read(pretDTO.getIdPret());
+		//TODO TEMP
+		long ti = 24*3600*1000;
+		pret.setDateRetour(new Timestamp(System.currentTimeMillis()+ti));
+		//
 		double montant = 0;
 		Timestamp limite = pret.getDateLimite();
 		Timestamp retour = new Timestamp(System.currentTimeMillis());
