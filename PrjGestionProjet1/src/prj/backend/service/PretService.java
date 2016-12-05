@@ -42,6 +42,7 @@ public class PretService extends Service<PretDTO,PretDAO>{
 			}
 			unPret.setLivreDTO(livre);
 			unPret.setMembreDTO(membre);
+			unPret.setDatePret(new Timestamp(System.currentTimeMillis()));
 			create(unPret);
 		} catch (DAOException exception) {
 			throw new ServiceException(exception);

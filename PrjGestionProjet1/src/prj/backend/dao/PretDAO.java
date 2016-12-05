@@ -1,7 +1,7 @@
 package prj.backend.dao;
 
 import java.sql.Timestamp;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import prj.backend.dto.LivreDTO;
@@ -15,28 +15,28 @@ public class PretDAO extends DAO<PretDTO>{
 	}
 
 	public List<PretDTO> findByMembre(MembreDTO membreDTO){
+		ArrayList<PretDTO> retour = new ArrayList<>();
 		List<PretDTO> prets = getAll();
-		List<PretDTO> retour = Collections.emptyList();
 		for(PretDTO pret : prets){
-			if(pret.getMembreDTO().getIdMembre()==membreDTO.getIdMembre()){
+			if(pret.getMembreDTO().getIdMembre().equals(membreDTO.getIdMembre())){
 				retour.add(pret);
 			}
 		}
 		return retour;
 	}
 	public List<PretDTO> findByLivre(LivreDTO livreDTO){
+		ArrayList<PretDTO> retour = new ArrayList<>();
 		List<PretDTO> prets = getAll();
-		List<PretDTO> retour = Collections.emptyList();
 		for(PretDTO pret : prets){
-			if(pret.getLivreDTO().getIdLivre()==livreDTO.getIdLivre()){
+			if(pret.getLivreDTO().getIdLivre().equals(livreDTO.getIdLivre())){
 				retour.add(pret);
 			}
 		}
 		return retour;
 	}
 	public List<PretDTO> findByRetard(){
+		ArrayList<PretDTO> retour = new ArrayList<>();
 		List<PretDTO> prets = getAll();
-		List<PretDTO> retour = Collections.emptyList();
 		for(PretDTO pret : prets){
 			if(pret.getDateRetour()==null){
 				if(pret.getDateLimite().before(new Timestamp(System.currentTimeMillis()))){

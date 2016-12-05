@@ -72,6 +72,12 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 		return getDAO().findByDateParution(dateParution);
 	}
 	public List<LivreDTO> findByForm(LivreDTO livreDTO){
+		if(livreDTO.getCategorieDTO()==null){
+			livreDTO.setCategorieDTO(new CategorieDTO());
+		}
+		if(livreDTO.getCategorieDTO().getNomCategorie()==null){
+			livreDTO.getCategorieDTO().setNomCategorie("");
+		}
 		return getDAO().findByForm(livreDTO);
 	}
 	

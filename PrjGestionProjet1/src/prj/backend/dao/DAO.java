@@ -19,6 +19,7 @@ public class DAO<T extends DTO> {
 				throw new DAOException("Duplication de l'ID");
 			}
 		}
+		System.out.println("");
 		dtos.add(dto);
 	}
 	
@@ -52,10 +53,14 @@ public class DAO<T extends DTO> {
 	}
 	
 	public void delete(T objDto) throws DAOException{
+		boolean supprime = false;
 		for(T unDto : dtos){
 			if(unDto.getId().equals(objDto.getId())){
-				throw new DAOException("L'entrée à supprimer n'existe pas");
+				supprime = true;
 			}
+		}
+		if(!supprime){
+			throw new DAOException("L'entrée à supprimer n'existe pas");
 		}
 		dtos.remove(objDto);
 	}

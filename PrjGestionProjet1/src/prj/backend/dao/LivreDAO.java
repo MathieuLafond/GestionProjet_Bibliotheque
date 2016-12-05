@@ -1,7 +1,7 @@
 package prj.backend.dao;
 
 import java.sql.Timestamp;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import prj.backend.dto.CategorieDTO;
@@ -14,7 +14,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 	}
 	
 	public void deleteAllInCategorie(CategorieDTO categorie){
-		List<LivreDTO> newList = Collections.emptyList();
+		ArrayList<LivreDTO> newList = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(!categorie.equals(livre.getCategorieDTO())){
@@ -25,7 +25,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 	}
 	
 	public List<LivreDTO> findByTitre(String titre){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(livre.getTitre().contains(titre)){
@@ -35,7 +35,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 		return retour;
 	}
 	public List<LivreDTO> findByAuteur(String auteur){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(livre.getAuteur().contains(auteur)){
@@ -45,7 +45,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 		return retour;
 	}
 	public List<LivreDTO> findByEditeur(String editeur){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(livre.getEditeur().contains(editeur)){
@@ -55,7 +55,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 		return retour;
 	}
 	public List<LivreDTO> findByLangue(String langue){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(livre.getLangue().contains(langue)){
@@ -65,17 +65,17 @@ public class LivreDAO extends DAO<LivreDTO> {
 		return retour;
 	}
 	public List<LivreDTO> findByCategorie(CategorieDTO categorie){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
-			if(livre.getCategorieDTO().equals(categorie)){
+			if(livre.getCategorieDTO().getIdCategorie().equals(categorie.getIdCategorie())){
 				retour.add(livre);
 			}
 		}
 		return retour;
 	}
 	public List<LivreDTO> findByEmplacement(String emplacement){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(livre.getEmplacement().contains(emplacement)){
@@ -85,7 +85,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 		return retour;
 	}
 	public List<LivreDTO> findByDateParution(Timestamp dateParution){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(livre.getDateParution().equals(dateParution)){
@@ -95,7 +95,7 @@ public class LivreDAO extends DAO<LivreDTO> {
 		return retour;
 	}
 	public List<LivreDTO> findByForm(LivreDTO livreDTO){
-		List<LivreDTO> retour = Collections.emptyList();
+		ArrayList<LivreDTO> retour = new ArrayList<>();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
 			if(		   livre.getTitre().contains(livreDTO.getTitre())
