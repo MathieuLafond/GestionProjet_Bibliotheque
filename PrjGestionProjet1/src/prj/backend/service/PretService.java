@@ -8,6 +8,7 @@ import prj.backend.db.Database;
 import prj.backend.dto.LivreDTO;
 import prj.backend.dto.MembreDTO;
 import prj.backend.dto.PretDTO;
+import prj.backend.exception.DAOException;
 import prj.backend.exception.ServiceException;
 import prj.backend.util.QuickLoad;
 import prj.backend.util.Tarif;
@@ -19,28 +20,32 @@ public class PretService extends Service<PretDTO,PretDAO>{
 	}
 
 	public void creer(PretDTO pretDTO) throws ServiceException{
-		PretDTO unPret = pretDTO;
-		MembreDTO membre = QuickLoad.read(pretDTO.getMembreDTO().getIdMembre(), Database.getMembres());
-		LivreDTO livre = QuickLoad.read(pretDTO.getLivreDTO().getIdLivre(), Database.getLivres());
-		if(!Database.getLivres().contains(livre)){
-			throw new ServiceException("Erreur : le livre n'existe pas");
-		}
-		if(!Database.getMembres().contains(membre)){
-			throw new ServiceException("Erreur : le membre n'existe pas");
-		}
-		List<PretDTO> prets = findByMembre(membre);
-		if(prets.size()>=Integer.parseInt(membre.getLimitePret())){
-			throw new ServiceException("Erreur : le membre a atteint sa limite de prêts");
-		}
-		prets = findByRetard();
-		for(PretDTO pret : prets){
-			if(pret.getMembreDTO().equals(pretDTO.getMembreDTO())){
-				throw new ServiceException("Erreur : le membre a des prêts en retard non payés");
+		try {
+			PretDTO unPret = pretDTO;
+			MembreDTO membre = QuickLoad.read(pretDTO.getMembreDTO().getIdMembre(), Database.getMembres());
+			LivreDTO livre = QuickLoad.read(pretDTO.getLivreDTO().getIdLivre(), Database.getLivres());
+			if(!Database.getLivres().contains(livre)){
+				throw new ServiceException("Erreur : le livre n'existe pas");
 			}
+			if(!Database.getMembres().contains(membre)){
+				throw new ServiceException("Erreur : le membre n'existe pas");
+			}
+			List<PretDTO> prets = findByMembre(membre);
+			if(prets.size()>=Integer.parseInt(membre.getLimitePret())){
+				throw new ServiceException("Erreur : le membre a atteint sa limite de prêts");
+			}
+			prets = findByRetard();
+			for(PretDTO pret : prets){
+				if(pret.getMembreDTO().equals(pretDTO.getMembreDTO())){
+					throw new ServiceException("Erreur : le membre a des prêts en retard non payés");
+				}
+			}
+			unPret.setLivreDTO(livre);
+			unPret.setMembreDTO(membre);
+			create(unPret);
+		} catch (DAOException exception) {
+			throw new ServiceException(exception);
 		}
-		unPret.setLivreDTO(livre);
-		unPret.setMembreDTO(membre);
-		create(unPret);
 	}
 	public void retourner(PretDTO pretDTO) throws ServiceException{
 		PretDTO pret = read(pretDTO.getIdPret());

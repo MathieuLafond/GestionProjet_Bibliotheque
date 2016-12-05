@@ -5,9 +5,12 @@ import java.util.List;
 
 import prj.backend.dao.LivreDAO;
 import prj.backend.db.Database;
+import prj.backend.dto.CategorieDTO;
 import prj.backend.dto.LivreDTO;
 import prj.backend.dto.PretDTO;
+import prj.backend.exception.DAOException;
 import prj.backend.exception.ServiceException;
+import prj.backend.util.QuickLoad;
 
 public class LivreService extends Service<LivreDTO,LivreDAO> {
 
@@ -29,17 +32,22 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 		delete(livre);
 	}
 	
-	public void deleteAllInCategorie(String idCategorie) throws ServiceException{
-		List<LivreDTO> livres = findByCategorie(idCategorie);
-		List<PretDTO> prets = Database.getPrets();
-		for(LivreDTO livre : livres){
-			for(PretDTO pret : prets){
-				if(pret.getLivreDTO().equals(livre)){
-					throw new ServiceException("Erreur : un prêt est en cours sur un livre de cette catégorie");
+	public void deleteAllInCategorie(CategorieDTO categorie) throws ServiceException{
+		try {
+			CategorieDTO categorieDTO = QuickLoad.read(categorie.getIdCategorie(), Database.getCategories());
+			List<LivreDTO> livres = findByCategorie(categorieDTO);
+			List<PretDTO> prets = Database.getPrets();
+			for(LivreDTO livre : livres){
+				for(PretDTO pret : prets){
+					if(pret.getLivreDTO().equals(livre)){
+						throw new ServiceException("Erreur : un prêt est en cours sur un livre de cette catégorie");
+					}
 				}
 			}
+			getDAO().deleteAllInCategorie(categorieDTO);
+		} catch (DAOException exception) {
+			throw new ServiceException(exception);
 		}
-		getDAO().deleteAllInCategorie(idCategorie);
 	}
 	
 	public List<LivreDTO> findByTitre(String titre){
@@ -54,8 +62,8 @@ public class LivreService extends Service<LivreDTO,LivreDAO> {
 	public List<LivreDTO> findByLangue(String langue){
 		return getDAO().findByLangue(langue);
 	}
-	public List<LivreDTO> findByCategorie(String idCategorie){
-		return getDAO().findByCategorie(idCategorie);
+	public List<LivreDTO> findByCategorie(CategorieDTO categorie){
+		return getDAO().findByCategorie(categorie);
 	}
 	public List<LivreDTO> findByEmplacement(String emplacement){
 		return getDAO().findByEmplacement(emplacement);

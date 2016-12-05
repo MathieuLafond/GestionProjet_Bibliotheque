@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import prj.backend.dao.LivreDAO;
+import prj.backend.dto.CategorieDTO;
 import prj.backend.dto.LivreDTO;
 import prj.backend.exception.FacadeException;
 import prj.backend.exception.ServiceException;
@@ -30,9 +31,9 @@ public class LivreFacade extends Facade<LivreDTO,LivreDAO,LivreService> {
 		}
 	}
 	
-	public void deleteAllInCategorie(String idCategorie) throws FacadeException{
+	public void deleteAllInCategorie(CategorieDTO categorie) throws FacadeException{
 		try{
-			getService().deleteAllInCategorie(idCategorie);
+			getService().deleteAllInCategorie(categorie);
 		} catch (ServiceException exception) {
 			throw new FacadeException(exception);
 		}
@@ -51,8 +52,8 @@ public class LivreFacade extends Facade<LivreDTO,LivreDAO,LivreService> {
 	public List<LivreDTO> findByLangue(String langue){
 		return getService().findByLangue(langue);
 	}
-	public List<LivreDTO> findByCategorie(String idCategorie){
-		return getService().findByCategorie(idCategorie);
+	public List<LivreDTO> findByCategorie(CategorieDTO categorie){
+		return getService().findByCategorie(categorie);
 	}
 	public List<LivreDTO> findByEmplacement(String emplacement){
 		return getService().findByEmplacement(emplacement);

@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 
+import prj.backend.dto.CategorieDTO;
 import prj.backend.dto.LivreDTO;
 
 public class LivreDAO extends DAO<LivreDTO> {
@@ -12,11 +13,11 @@ public class LivreDAO extends DAO<LivreDTO> {
 		super(dtos);
 	}
 	
-	public void deleteAllInCategorie(String idCategorie){
+	public void deleteAllInCategorie(CategorieDTO categorie){
 		List<LivreDTO> newList = Collections.emptyList();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
-			if(!idCategorie.equals(livre.getCategorieDTO())){
+			if(!categorie.equals(livre.getCategorieDTO())){
 				newList.add(livre);
 			}
 		}
@@ -63,11 +64,11 @@ public class LivreDAO extends DAO<LivreDTO> {
 		}
 		return retour;
 	}
-	public List<LivreDTO> findByCategorie(String categorie){
+	public List<LivreDTO> findByCategorie(CategorieDTO categorie){
 		List<LivreDTO> retour = Collections.emptyList();
 		List<LivreDTO> livres = getAll();
 		for(LivreDTO livre : livres){
-			if(livre.getCategorieDTO().getIdCategorie().contains(categorie)){
+			if(livre.getCategorieDTO().equals(categorie)){
 				retour.add(livre);
 			}
 		}
