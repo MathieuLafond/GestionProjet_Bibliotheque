@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class FenUtilisateur extends JFrame {
 
@@ -19,6 +20,7 @@ public class FenUtilisateur extends JFrame {
 	private JTextField txtMembre;
 	private JTextField txtLivre;
 	private JTextField txtPret;
+	private JTextField txtCategorie;
 
 	/**
 	 * Launch the application.
@@ -41,24 +43,52 @@ public class FenUtilisateur extends JFrame {
 	 */
 	public FenUtilisateur() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 5, 424, 250);
+		tabbedPane.setBounds(5, 5, 475, 325);
 		contentPane.add(tabbedPane);
 		
 		JPanel MembrePanel = new JPanel();
 		tabbedPane.addTab("Membre", null, MembrePanel, null);
+		MembrePanel.setLayout(null);
 		
 		JPanel LivrePanel = new JPanel();
 		tabbedPane.addTab("Livre", null, LivrePanel, null);
+		LivrePanel.setLayout(null);
 		
 		JPanel CategoriePanel = new JPanel();
 		tabbedPane.addTab("Categorie", null, CategoriePanel, null);
+		CategoriePanel.setLayout(null);
+		
+		JLabel lblCategorie = new JLabel("Cat\u00E9gorie :");
+		lblCategorie.setBounds(128, 47, 78, 14);
+		CategoriePanel.add(lblCategorie);
+		
+		txtCategorie = new JTextField();
+		txtCategorie.setBounds(229, 44, 86, 20);
+		CategoriePanel.add(txtCategorie);
+		txtCategorie.setColumns(10);
+		
+		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.setBounds(64, 135, 89, 23);
+		CategoriePanel.add(btnAjouter);
+		
+		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.setBounds(181, 135, 89, 23);
+		CategoriePanel.add(btnSupprimer);
+		
+		JButton btnListerCategorie = new JButton("Lister");
+		btnListerCategorie.setBounds(304, 135, 89, 23);
+		CategoriePanel.add(btnListerCategorie);
+		
+		JLabel lblWarningCategorie = new JLabel("");
+		lblWarningCategorie.setBounds(39, 260, 397, 14);
+		CategoriePanel.add(lblWarningCategorie);
 		
 		JPanel PretPanel = new JPanel();
 		tabbedPane.addTab("Prêt", null, PretPanel, null);
@@ -82,10 +112,10 @@ public class FenUtilisateur extends JFrame {
 		PretPanel.add(txtLivre);
 		txtLivre.setColumns(10);
 		
-		JLabel lblWarning = new JLabel("");
-		lblWarning.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblWarning.setBounds(54, 181, 304, 14);
-		PretPanel.add(lblWarning);
+		JLabel lblWarningPret = new JLabel("");
+		lblWarningPret.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblWarningPret.setBounds(54, 181, 304, 14);
+		PretPanel.add(lblWarningPret);
 		
 		JButton btnPret = new JButton("Pr\u00EAter");
 		btnPret.setBounds(10, 131, 89, 23);
@@ -95,9 +125,9 @@ public class FenUtilisateur extends JFrame {
 		btnRetour.setBounds(109, 131, 89, 23);
 		PretPanel.add(btnRetour);
 		
-		JButton btnListe = new JButton("Lister");
-		btnListe.setBounds(208, 131, 89, 23);
-		PretPanel.add(btnListe);
+		JButton btnListePret = new JButton("Lister");
+		btnListePret.setBounds(208, 131, 89, 23);
+		PretPanel.add(btnListePret);
 		
 		JButton btnPayer = new JButton("Payer");
 		btnPayer.setBounds(307, 131, 89, 23);
