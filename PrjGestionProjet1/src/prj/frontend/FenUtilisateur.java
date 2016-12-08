@@ -71,6 +71,11 @@ public class FenUtilisateur extends JFrame {
 	 */
 	public FenUtilisateur() {
 		setResizable(false);
+		try {
+			app.loadDatabase();
+		} catch (DAOException e3) {
+			JOptionPane.showMessageDialog(null, e3.getMessage());
+		}
 		
 		
 		
