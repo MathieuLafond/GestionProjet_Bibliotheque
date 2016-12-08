@@ -35,5 +35,9 @@ public class CategorieDTO extends DTO {
 		return getIdCategorie()+";"+getNomCategorie();
 	}
 	
+	public String toString(){
+		return nomCategorie;
+	}
+	
 	
 }
