@@ -20,13 +20,19 @@ public class MembreDTO extends DTO{
 	
 	
 	// getters/setters
+	@Override
+	public void setId(String id){
+		this.idMembre = id;
+		super.setId(id);
+	}
+	
 	public String getIdMembre() {
 		return idMembre;
 	}
 
 	public void setIdMembre(String idMembre) {
 		this.idMembre = idMembre;
-		setId(idMembre);
+		super.setId(idMembre);
 	}
 
 	public String getPrenom() {

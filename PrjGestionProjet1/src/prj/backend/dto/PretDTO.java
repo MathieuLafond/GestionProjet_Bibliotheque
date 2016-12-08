@@ -19,13 +19,19 @@ public class PretDTO extends DTO {
 
 	
 	//getters/setters
+	@Override
+	public void setId(String id){
+		this.idPret = id;
+		super.setId(id);
+	}
+	
 	public String getIdPret() {
 		return idPret;
 	}
 
 	public void setIdPret(String idPret) {
 		this.idPret = idPret;
-		setId(idPret);
+		super.setId(idPret);
 	}
 
 	public MembreDTO getMembreDTO() {

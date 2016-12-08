@@ -22,13 +22,19 @@ public class LivreDTO extends DTO {
 	
 	
 	//getters/setters
+	@Override
+	public void setId(String id){
+		this.idLivre = id;
+		super.setId(id);
+	}
+	
 	public String getIdLivre() {
 		return idLivre;
 	}
-
+	
 	public void setIdLivre(String idLivre) {
 		this.idLivre = idLivre;
-		setId(idLivre);
+		super.setId(idLivre);
 	}
 
 	public CategorieDTO getCategorieDTO() {
@@ -87,9 +93,8 @@ public class LivreDTO extends DTO {
 		this.emplacement = emplacement;
 	}
 
-	public char[] stock() {
-		// TODO Auto-generated method stub
-		return null;
+	public String stock() {
+		return idLivre+";"+categorie.getIdCategorie()+";"+titre+";"+auteur+";"+editeur+";"+langue+";"+dateParution.getTime()+";"+emplacement;
 	}
 	
 	

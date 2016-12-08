@@ -8,13 +8,19 @@ public class CategorieDTO extends DTO {
 	
 	
 	//getters/setters
+	@Override
+	public void setId(String id){
+		this.idCategorie = id;
+		super.setId(id);
+	}
+	
 	public String getIdCategorie() {
 		return idCategorie;
 	}
 
 	public void setIdCategorie(String idCategorie) {
 		this.idCategorie = idCategorie;
-		setId(idCategorie);
+		super.setId(idCategorie);
 	}
 
 	public String getNomCategorie() {
@@ -25,9 +31,8 @@ public class CategorieDTO extends DTO {
 		this.nomCategorie = nomCategorie;
 	}
 
-	public char[] stock() {
-		// TODO Auto-generated method stub
-		return null;
+	public String stock() {
+		return getIdCategorie()+";"+getNomCategorie();
 	}
 	
 	
