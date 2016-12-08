@@ -5,6 +5,7 @@ import prj.backend.dao.LivreDAO;
 import prj.backend.dao.MembreDAO;
 import prj.backend.dao.PretDAO;
 import prj.backend.db.Database;
+import prj.backend.exception.DAOException;
 import prj.backend.facade.CategorieFacade;
 import prj.backend.facade.LivreFacade;
 import prj.backend.facade.MembreFacade;
@@ -55,5 +56,12 @@ public class AppFunction {
 		return categorieFacade;
 	}
 	
+	public void loadDatabase() throws DAOException{
+		Database.load();
+	}
+	
+	public void saveDatabase() throws DAOException{
+		Database.save();
+	}
 	
 }

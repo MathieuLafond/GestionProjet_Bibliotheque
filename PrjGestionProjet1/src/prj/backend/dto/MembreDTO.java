@@ -84,6 +84,10 @@ public class MembreDTO extends DTO{
 	public void setLimitePret(String limitePret) {
 		this.limitePret = limitePret;
 	}
+
+	public String stock() {
+		return idMembre+";"+prenom+";"+nom+";"+adresse+";"+codePostal+";"+telephone+";"+courriel+";"+limitePret;
+	}
 	
 	
 	

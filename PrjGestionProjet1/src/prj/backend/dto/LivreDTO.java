@@ -86,6 +86,11 @@ public class LivreDTO extends DTO {
 	public void setEmplacement(String emplacement) {
 		this.emplacement = emplacement;
 	}
+
+	public char[] stock() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

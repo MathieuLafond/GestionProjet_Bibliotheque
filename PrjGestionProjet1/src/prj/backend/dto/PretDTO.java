@@ -67,5 +67,13 @@ public class PretDTO extends DTO {
 	public void setDateLimite(Timestamp dateLimite) {
 		this.dateLimite = dateLimite;
 	}
+	
+	public String stock() {
+		String date = "0";
+		if(dateRetour!=null){
+			date=""+dateRetour.getTime();
+		}
+		return idPret+";"+membreDTO.getIdMembre()+";"+livreDTO.getIdLivre()+";"+datePret.getTime()+";"+date+";"+dateLimite.getTime();
+	}
 
 }

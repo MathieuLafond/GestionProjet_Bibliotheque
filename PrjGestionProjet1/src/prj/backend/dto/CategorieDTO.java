@@ -24,6 +24,11 @@ public class CategorieDTO extends DTO {
 	public void setNomCategorie(String nomCategorie) {
 		this.nomCategorie = nomCategorie;
 	}
+
+	public char[] stock() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
