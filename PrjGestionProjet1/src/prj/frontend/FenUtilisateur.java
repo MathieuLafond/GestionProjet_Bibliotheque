@@ -119,10 +119,12 @@ public class FenUtilisateur extends JFrame {
 		MembrePanel.add(txtIdMembre);
 		
 		JLabel lblIdMembre = new JLabel("Id :");
+		lblIdMembre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblIdMembre.setBounds(10, 14, 78, 14);
 		MembrePanel.add(lblIdMembre);
 		
 		JLabel lblPrenomMembre = new JLabel("Pr\u00E9nom  :");
+		lblPrenomMembre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPrenomMembre.setBounds(10, 48, 78, 14);
 		MembrePanel.add(lblPrenomMembre);
 		
@@ -137,10 +139,12 @@ public class FenUtilisateur extends JFrame {
 		MembrePanel.add(txtNomMembre);
 		
 		JLabel lblNomMembre = new JLabel("Nom :");
+		lblNomMembre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNomMembre.setBounds(10, 79, 78, 14);
 		MembrePanel.add(lblNomMembre);
 		
 		JLabel lblAdresseMembre = new JLabel("Adresse :");
+		lblAdresseMembre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAdresseMembre.setBounds(10, 110, 78, 14);
 		MembrePanel.add(lblAdresseMembre);
 		
@@ -215,7 +219,7 @@ public class FenUtilisateur extends JFrame {
 				}
 			}
 		});
-		btnInscrire.setBounds(10, 188, 78, 23);
+		btnInscrire.setBounds(10, 188, 86, 23);
 		MembrePanel.add(btnInscrire);
 		
 		JButton btnDesinscrire = new JButton("D\u00E9sinscrire");
@@ -261,7 +265,7 @@ public class FenUtilisateur extends JFrame {
 				}
 			}
 		});
-		btnModifier.setBounds(227, 188, 89, 23);
+		btnModifier.setBounds(211, 188, 105, 23);
 		MembrePanel.add(btnModifier);
 		
 		JButton btnListerTous = new JButton("Lister tous");
@@ -348,35 +352,43 @@ public class FenUtilisateur extends JFrame {
 		LivrePanel.add(txtDateParution);
 		
 		JLabel lblCatLivre = new JLabel("Cat\u00E9gorie :");
-		lblCatLivre.setBounds(33, 110, 78, 14);
+		lblCatLivre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCatLivre.setBounds(25, 110, 86, 14);
 		LivrePanel.add(lblCatLivre);
 		
 		JLabel lblAuteurLivre = new JLabel("Auteur :");
+		lblAuteurLivre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAuteurLivre.setBounds(33, 79, 78, 14);
 		LivrePanel.add(lblAuteurLivre);
 		
 		JLabel lblTitreLivre = new JLabel("Titre  :");
+		lblTitreLivre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTitreLivre.setBounds(33, 48, 78, 14);
 		LivrePanel.add(lblTitreLivre);
 		
 		JLabel lblIdLivre = new JLabel("Id :");
+		lblIdLivre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblIdLivre.setBounds(33, 14, 78, 14);
 		LivrePanel.add(lblIdLivre);
 		
 		JLabel lblDateDeParution = new JLabel("Date de parution :");
+		lblDateDeParution.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDateDeParution.setBounds(261, 110, 103, 14);
 		LivrePanel.add(lblDateDeParution);
 		
 		JLabel lblPlace = new JLabel("Emplacement :");
+		lblPlace.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPlace.setBounds(261, 79, 103, 14);
 		LivrePanel.add(lblPlace);
 		
 		JLabel lblLangue = new JLabel("Langue :");
-		lblLangue.setBounds(286, 48, 78, 14);
+		lblLangue.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLangue.setBounds(261, 48, 103, 14);
 		LivrePanel.add(lblLangue);
 		
 		JLabel lblEditLivre = new JLabel("\u00C9diteur :");
-		lblEditLivre.setBounds(286, 14, 78, 14);
+		lblEditLivre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEditLivre.setBounds(261, 14, 103, 14);
 		LivrePanel.add(lblEditLivre);
 		
 		JRadioButton rbTitreLivre = new JRadioButton("");
@@ -613,7 +625,8 @@ public class FenUtilisateur extends JFrame {
 		CategoriePanel.setLayout(null);
 		
 		JLabel lblCatCategorie = new JLabel("Cat\u00E9gorie :");
-		lblCatCategorie.setBounds(128, 47, 78, 14);
+		lblCatCategorie.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCatCategorie.setBounds(64, 47, 142, 14);
 		CategoriePanel.add(lblCatCategorie);
 		
 		txtCatCategorie = new JTextField();
@@ -674,7 +687,8 @@ public class FenUtilisateur extends JFrame {
 		CategoriePanel.add(lblWarningCategorie);
 		
 		JLabel lblIdCategorie = new JLabel("Num de categorie :");
-		lblIdCategorie.setBounds(100, 72, 106, 14);
+		lblIdCategorie.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblIdCategorie.setBounds(64, 72, 142, 14);
 		CategoriePanel.add(lblIdCategorie);
 		
 		txtIdCategorie = new JTextField();
