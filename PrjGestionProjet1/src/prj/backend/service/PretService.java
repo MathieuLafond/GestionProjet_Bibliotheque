@@ -41,9 +41,11 @@ public class PretService extends Service<PretDTO,PretDAO>{
 				}
 			}
 			unPret.setIdPret(""+Database.getSeqPretVal());
+			long date = System.currentTimeMillis();
 			unPret.setLivreDTO(livre);
 			unPret.setMembreDTO(membre);
-			unPret.setDatePret(new Timestamp(System.currentTimeMillis()));
+			unPret.setDatePret(new Timestamp(date));
+			unPret.setDateLimite(new Timestamp(date+(1000*3600*24*7)));
 			create(unPret);
 		} catch (DAOException exception) {
 			throw new ServiceException(exception);
