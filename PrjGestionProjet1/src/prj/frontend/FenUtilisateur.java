@@ -170,19 +170,23 @@ public class FenUtilisateur extends JFrame {
 		MembrePanel.add(txtCode);
 		
 		JLabel lblCode = new JLabel("Code postal :");
-		lblCode.setBounds(277, 14, 64, 14);
+		lblCode.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCode.setBounds(227, 14, 114, 14);
 		MembrePanel.add(lblCode);
 		
 		JLabel lblTelephoneMembre = new JLabel("Telephone :");
-		lblTelephoneMembre.setBounds(284, 48, 57, 14);
+		lblTelephoneMembre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTelephoneMembre.setBounds(227, 48, 114, 14);
 		MembrePanel.add(lblTelephoneMembre);
 		
 		JLabel lblCourriel = new JLabel("Courriel :");
-		lblCourriel.setBounds(297, 79, 44, 14);
+		lblCourriel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCourriel.setBounds(227, 79, 114, 14);
 		MembrePanel.add(lblCourriel);
 		
 		JLabel lblLimiteDePret = new JLabel("Limite de pret :");
-		lblLimiteDePret.setBounds(269, 110, 72, 14);
+		lblLimiteDePret.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLimiteDePret.setBounds(227, 110, 114, 14);
 		MembrePanel.add(lblLimiteDePret);
 		
 		JButton btnInscrire = new JButton("Inscrire");
@@ -364,7 +368,7 @@ public class FenUtilisateur extends JFrame {
 		LivrePanel.add(lblDateDeParution);
 		
 		JLabel lblPlace = new JLabel("Emplacement :");
-		lblPlace.setBounds(286, 79, 78, 14);
+		lblPlace.setBounds(261, 79, 103, 14);
 		LivrePanel.add(lblPlace);
 		
 		JLabel lblLangue = new JLabel("Langue :");
@@ -624,7 +628,7 @@ public class FenUtilisateur extends JFrame {
 				catDTO.setNomCategorie(txtCatCategorie.getText());
 				try {
 					app.getCategorieFacade().ajouter(catDTO);
-					cBoxCat.updateUI();
+					cBoxCat.addItem(catDTO);
 				} catch (FacadeException e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
@@ -641,6 +645,7 @@ public class FenUtilisateur extends JFrame {
 				catDTO.setIdCategorie(txtIdCategorie.getText());
 				try {
 					app.getCategorieFacade().supprimer(catDTO);
+					cBoxCat.removeItem(catDTO);
 				} catch (FacadeException e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
@@ -682,7 +687,8 @@ public class FenUtilisateur extends JFrame {
 		PretPanel.setLayout(null);
 		
 		JLabel lblNumroDeMembre = new JLabel("Num\u00E9ro de membre : ");
-		lblNumroDeMembre.setBounds(54, 11, 111, 25);
+		lblNumroDeMembre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNumroDeMembre.setBounds(63, 11, 155, 25);
 		PretPanel.add(lblNumroDeMembre);
 		
 		txtMembrePret = new JTextField();
@@ -691,7 +697,8 @@ public class FenUtilisateur extends JFrame {
 		txtMembrePret.setColumns(10);
 		
 		JLabel lblIdLivrePret = new JLabel("Num\u00E9ro de livre :");
-		lblIdLivrePret.setBounds(73, 33, 92, 25);
+		lblIdLivrePret.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblIdLivrePret.setBounds(85, 33, 133, 25);
 		PretPanel.add(lblIdLivrePret);
 		
 		txtIdLivrePret = new JTextField();
@@ -774,7 +781,8 @@ public class FenUtilisateur extends JFrame {
 		PretPanel.add(btnPayer);
 		
 		JLabel lblNumroDePret = new JLabel("Num\u00E9ro de pr\u00EAt :");
-		lblNumroDePret.setBounds(74, 60, 91, 14);
+		lblNumroDePret.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNumroDePret.setBounds(63, 60, 155, 14);
 		PretPanel.add(lblNumroDePret);
 		
 		txtPret = new JTextField();
