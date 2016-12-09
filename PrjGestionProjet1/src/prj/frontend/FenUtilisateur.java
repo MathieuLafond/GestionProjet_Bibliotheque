@@ -114,24 +114,6 @@ public class FenUtilisateur extends JFrame {
 		MembrePanel.setLayout(null);
 		
 		txtIdMembre = new JTextField();
-		txtIdMembre.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent arg0) {
-				MembreDTO membreDTO = new MembreDTO();
-				try {
-					membreDTO = app.getMembreFacade().read(txtIdMembre.getText());
-					txtNomMembre.setText(membreDTO.getNom());
-					txtPrenomMembre.setText(membreDTO.getPrenom());
-					txtCourriel.setText(membreDTO.getCourriel());
-					txtAdresseMembre.setText(membreDTO.getAdresse());
-					txtTel.setText(membreDTO.getTelephone());
-					txtCode.setText(membreDTO.getCodePostal());
-					txtLimite.setText(membreDTO.getLimitePret());
-				} catch (FacadeException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());
-				}
-			}
-		});
 		txtIdMembre.setColumns(10);
 		txtIdMembre.setBounds(98, 11, 86, 20);
 		MembrePanel.add(txtIdMembre);
@@ -229,7 +211,7 @@ public class FenUtilisateur extends JFrame {
 				}
 			}
 		});
-		btnInscrire.setBounds(10, 188, 72, 23);
+		btnInscrire.setBounds(10, 188, 78, 23);
 		MembrePanel.add(btnInscrire);
 		
 		JButton btnDesinscrire = new JButton("D\u00E9sinscrire");
@@ -245,7 +227,7 @@ public class FenUtilisateur extends JFrame {
 				}
 			}
 		});
-		btnDesinscrire.setBounds(112, 188, 89, 23);
+		btnDesinscrire.setBounds(98, 188, 103, 23);
 		MembrePanel.add(btnDesinscrire);
 		
 		JButton btnModifier = new JButton("Modifier");
@@ -291,8 +273,29 @@ public class FenUtilisateur extends JFrame {
 				JOptionPane.showMessageDialog(null, msg);
 			}
 		});
-		btnListerTous.setBounds(348, 188, 89, 23);
+		btnListerTous.setBounds(326, 188, 134, 23);
 		MembrePanel.add(btnListerTous);
+		
+		JButton btnListerId = new JButton("Lister par Id");
+		btnListerId.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MembreDTO membreDTO = new MembreDTO();
+				try {
+					membreDTO = app.getMembreFacade().read(txtIdMembre.getText());
+					txtNomMembre.setText(membreDTO.getNom());
+					txtPrenomMembre.setText(membreDTO.getPrenom());
+					txtCourriel.setText(membreDTO.getCourriel());
+					txtAdresseMembre.setText(membreDTO.getAdresse());
+					txtTel.setText(membreDTO.getTelephone());
+					txtCode.setText(membreDTO.getCodePostal());
+					txtLimite.setText(membreDTO.getLimitePret());
+				} catch (FacadeException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+			}
+		});
+		btnListerId.setBounds(154, 243, 134, 23);
+		MembrePanel.add(btnListerId);
 		
 		JPanel LivrePanel = new JPanel();
 		tabbedPane.addTab("Livre", null, LivrePanel, null);
@@ -306,24 +309,6 @@ public class FenUtilisateur extends JFrame {
 		LivrePanel.add(cBoxCat);
 		
 		txtIdLivre = new JTextField();
-		txtIdLivre.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent arg0) {
-				LivreDTO livreDTO = new LivreDTO();
-				try {
-					livreDTO = app.getLivreFacade().read(txtIdLivre.getText());
-					txtTitreLivre.setText(livreDTO.getTitre());
-					txtAuteurLivre.setText(livreDTO.getAuteur());
-					txtLangue.setText(livreDTO.getLangue());
-					txtDateParution.setText(livreDTO.getDateParution().toString());
-					txtPlace.setText(livreDTO.getEmplacement());
-					txtEditLivre.setText(livreDTO.getEditeur());
-					cBoxCat.setSelectedItem(livreDTO.getCategorieDTO());
-				} catch (FacadeException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());
-				}
-			}
-		});
 		txtIdLivre.setColumns(10);
 		txtIdLivre.setBounds(121, 11, 86, 20);
 		LivrePanel.add(txtIdLivre);
@@ -391,39 +376,44 @@ public class FenUtilisateur extends JFrame {
 		LivrePanel.add(lblEditLivre);
 		
 		JRadioButton rbTitreLivre = new JRadioButton("");
-		rbTitreLivre.setBounds(2, 44, 109, 23);
+		rbTitreLivre.setBounds(2, 44, 27, 23);
 		rbTitreLivre.setActionCommand("rbTitreLivre");
 		LivrePanel.add(rbTitreLivre);
 		
 		JRadioButton rbAuteur = new JRadioButton("");
-		rbAuteur.setBounds(2, 75, 109, 23);
+		rbAuteur.setBounds(2, 75, 27, 23);
 		rbAuteur.setActionCommand("rbAuteur");
 		LivrePanel.add(rbAuteur);
 		
 		JRadioButton rbCatLivre = new JRadioButton("");
-		rbCatLivre.setBounds(2, 106, 109, 23);
+		rbCatLivre.setBounds(2, 106, 27, 23);
 		rbCatLivre.setActionCommand("rbCatLivre");
 		LivrePanel.add(rbCatLivre);
 		
 		JRadioButton rbEdit = new JRadioButton("");
-		rbEdit.setBounds(238, 8, 109, 23);
+		rbEdit.setBounds(238, 8, 27, 23);
 		rbEdit.setActionCommand("rbEdit");
 		LivrePanel.add(rbEdit);
 		
 		JRadioButton rbLangue = new JRadioButton("");
-		rbLangue.setBounds(238, 42, 109, 23);
+		rbLangue.setBounds(238, 42, 27, 23);
 		rbLangue.setActionCommand("rbLangue");
 		LivrePanel.add(rbLangue);
 		
 		JRadioButton rbPlace = new JRadioButton("");
-		rbPlace.setBounds(238, 76, 109, 23);
+		rbPlace.setBounds(238, 76, 27, 23);
 		rbPlace.setActionCommand("rbPlace");
 		LivrePanel.add(rbPlace);
 		
 		JRadioButton rbDate = new JRadioButton("");
-		rbDate.setBounds(238, 107, 109, 23);
+		rbDate.setBounds(238, 107, 21, 23);
 		rbDate.setActionCommand("rbDate");
 		LivrePanel.add(rbDate);
+		
+		JRadioButton rbIdLivre = new JRadioButton("");
+		rbIdLivre.setActionCommand("rbIdLivre");
+		rbIdLivre.setBounds(0, 10, 27, 23);
+		LivrePanel.add(rbIdLivre);
 		
 		ButtonGroup btnGroup = new ButtonGroup();
 		btnGroup.add(rbDate);
@@ -433,6 +423,7 @@ public class FenUtilisateur extends JFrame {
 		btnGroup.add(rbCatLivre);
 		btnGroup.add(rbAuteur);
 		btnGroup.add(rbTitreLivre);
+		btnGroup.add(rbIdLivre);
 		
 		
 		
@@ -471,7 +462,7 @@ public class FenUtilisateur extends JFrame {
 				}
 			}
 		});
-		btnAjouterLivre.setBounds(33, 202, 89, 23);
+		btnAjouterLivre.setBounds(2, 202, 89, 23);
 		LivrePanel.add(btnAjouterLivre);
 		
 		JButton btnSupprimerLivre = new JButton("Supprimer");
@@ -487,7 +478,7 @@ public class FenUtilisateur extends JFrame {
 					}
 				}
 			});
-		btnSupprimerLivre.setBounds(139, 202, 89, 23);
+		btnSupprimerLivre.setBounds(101, 202, 107, 23);
 		LivrePanel.add(btnSupprimerLivre);
 		
 		JButton btnListerToutLivre = new JButton("Lister tout");
@@ -503,7 +494,7 @@ public class FenUtilisateur extends JFrame {
 				JOptionPane.showMessageDialog(null, msg);
 			}
 		});
-		btnListerToutLivre.setBounds(238, 202, 89, 23);
+		btnListerToutLivre.setBounds(218, 202, 100, 23);
 		LivrePanel.add(btnListerToutLivre);
 		
 		JButton btnListerChampLivre = new JButton("Lister champ");
@@ -539,7 +530,7 @@ public class FenUtilisateur extends JFrame {
 				
 			}
 		});
-		btnListerChampLivre.setBounds(348, 202, 100, 23);
+		btnListerChampLivre.setBounds(328, 202, 120, 23);
 		LivrePanel.add(btnListerChampLivre);
 		
 		JButton btnSuppCatLivre = new JButton("Supprimer selon la categorie");
@@ -553,7 +544,7 @@ public class FenUtilisateur extends JFrame {
 				JOptionPane.showMessageDialog(null, "Suppression réussie");
 			}
 		});
-		btnSuppCatLivre.setBounds(149, 242, 173, 23);
+		btnSuppCatLivre.setBounds(233, 242, 215, 23);
 		LivrePanel.add(btnSuppCatLivre);
 		
 		JButton btnListerSelection = new JButton("Lister Selection");
@@ -585,6 +576,17 @@ public class FenUtilisateur extends JFrame {
 	            					JOptionPane.showMessageDialog(null, e2.getMessage());
 	            				}
 	            		 break;
+	            case "rbIdLivre" :  LivreDTO livreDTO = new LivreDTO();
+									try {
+										livreDTO = app.getLivreFacade().read(txtIdLivre.getText());
+									} catch (FacadeException e1) {
+										JOptionPane.showMessageDialog(null, e1.getMessage());
+									}
+									msg += "\n"+livreDTO.getIdLivre()+"\t"+livreDTO.getTitre()
+									+"\t"+livreDTO.getAuteur()+"\t"+livreDTO.getCategorieDTO().getNomCategorie()+"\t"
+									+livreDTO.getEditeur()+"\t"+livreDTO.getLangue()+"\t"
+									+livreDTO.getEmplacement()+"\t"+livreDTO.getDateParution();
+	            		break;
 	        }
 				for(LivreDTO livreDTO : search){
 					msg += "\n"+livreDTO.getIdLivre()+"\t"+livreDTO.getTitre()
@@ -595,8 +597,10 @@ public class FenUtilisateur extends JFrame {
 				JOptionPane.showMessageDialog(null, msg);	
 			}
 		});
-		btnListerSelection.setBounds(22, 242, 117, 23);
+		btnListerSelection.setBounds(22, 242, 148, 23);
 		LivrePanel.add(btnListerSelection);
+		
+		
 		
 		
 		
@@ -620,6 +624,7 @@ public class FenUtilisateur extends JFrame {
 				catDTO.setNomCategorie(txtCatCategorie.getText());
 				try {
 					app.getCategorieFacade().ajouter(catDTO);
+					cBoxCat.updateUI();
 				} catch (FacadeException e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
@@ -642,7 +647,7 @@ public class FenUtilisateur extends JFrame {
 				JOptionPane.showMessageDialog(null, "Suppression réussie");
 			}
 		});
-		btnSupprimerCat.setBounds(181, 135, 89, 23);
+		btnSupprimerCat.setBounds(181, 135, 113, 23);
 		CategoriePanel.add(btnSupprimerCat);
 		
 		JButton btnListerCategorie = new JButton("Lister");
@@ -730,7 +735,7 @@ public class FenUtilisateur extends JFrame {
 				JOptionPane.showMessageDialog(null, "Retour réussie");
 			}
 		});
-		btnRetour.setBounds(109, 131, 89, 23);
+		btnRetour.setBounds(98, 131, 99, 23);
 		PretPanel.add(btnRetour);
 		
 		JButton btnListePret = new JButton("Lister");
